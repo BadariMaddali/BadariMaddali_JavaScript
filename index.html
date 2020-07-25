@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm() {
+  var firstName = document.forms["myForm"]["fname"].value;
+  var lastName = document.forms["myForm"]["lname"].value;
+  var email = document.forms["myForm"]["emailid"].value;
+  var atposition=email.indexOf("@");  
+  var dotposition=email.lastIndexOf("."); 
+  var phonenum = document.forms["myForm"]["phno"].value;
+  var phoneno = "[0-9]{10}";
+  var password1 = document.forms["myForm"]["pwd1"].value;
+  var password2 = document.forms["myForm"]["pwd2"].value;
+  if (firstName.indexOf(' ') >= 0) {
+    alert("First Name cannot contain white spaces");
+    return false;
+  }
+  if (lastName.indexOf(' ') >= 0) {
+    alert("Last Name cannot contain white spaces");
+    return false;
+  }
+  if(password1.length <= 6){
+  	alert("password should be atleast 6 characters");
+  	return false;
+  }
+  if(password1!=password2){
+  	alert("Passwords do not match");
+  	return false;
+  }
+  if( !(phonenum.match(phoneno)) || (phonenum.length>10) ){
+  	alert("Invalid Phone Number");
+  	return false;
+  }
+  if (atposition<1 || dotposition<atposition+2 || dotposition+2>=x.length){  
+    alert("Enter valid Email Id");
+    return false;  
+  }
+  return true;
+}
+</script>
+<style type="text/css">
+	form { 
+		padding: 16px;
+		display: block;
+		flex-direction: column;
+		margin : auto;
+		border: 1px solid;
+	} 
+
+	.header{
+		font-size: 20px;
+		font-family: "Gill Sans", sans-serif;
+	}
+	
+	input[type=text], 
+	input[type=password] ,
+	input[type=emailid]{ 
+		padding: 12px 20px; 
+		margin: 8px 0; 
+		display: inline-block; 
+		border: 1px solid #ccc; 
+		box-sizing: border-box; 
+	} 
+	
+	.container_up{
+		display: flex;
+		flex-direction: column;
+		justify-content: center; 
+	}
+	
+	button { 
+		color: white; 
+		padding: 14px 20px; 
+		margin: 8px 0; 
+		border-radius: 10px;
+		border: 1px solid #ccc;
+		cursor: pointer; 
+	} 
+	
+	button:hover { 
+		opacity: 0.8; 
+	} 
+	
+	
+	.signin{
+		background-color: #87CEEB;
+		font-size: 16px;
+		letter-spacing: 1px;
+	}
+	
+	@media only screen and (min-width: 600px) { 
+		form{
+			width: 50%;
+		}
+		
+
+	@media only screen and (min-width: 768px) { 
+		form{
+			width: 40%;
+		}
+		
+	} 
+
+	@media only screen and (min-width: 992px) { 
+		form{
+			width: 30%;
+		}
+		
+	} 
+
+	
+
+</style>
+</head>
+<body>
+
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  <div class="container">
+			<div class="header"> 
+				<p style="text-align: center;"><b>Sign Up</b></p>
+			</div> 
+			<div class="container_up">
+				<input type="text" placeholder="First Name" name="fname" required="">
+				<input type="text" placeholder="Last Name" name="lname" required=""> 
+				<input type="text" placeholder="Phone Number" id="phno" required="">
+				<input type="emailid" placeholder="Email Id" name="emailid"  required=""> 
+				<input type="password" placeholder="Password" name="pwd1" required=""> 
+				<input type="password" placeholder="Confirm Password" name="pwd2" required="">
+				<button class="signin" type="submit"><b>SUBMIT</b></button>
+			</div>
+		</div>
+</form>
+
+</body>
+</html>
